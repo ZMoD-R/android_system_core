@@ -43,6 +43,7 @@
 #include <utils/Log.h>
 
 #include <cutils/sched_policy.h>
+#include <cutils/threads.h>
 
 #ifdef HAVE_ANDROID_OS
 # define __android_unused
@@ -299,6 +300,11 @@ int androidCreateThreadEtc(android_thread_func_t entryFunction,
 void androidSetCreateThreadFunc(android_create_thread_fn func)
 {
     gCreateThreadFn = func;
+}
+
+pid_t androidGetTid()
+{
+    return gettid();
 }
 
 #ifdef HAVE_ANDROID_OS
